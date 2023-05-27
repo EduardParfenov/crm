@@ -1,0 +1,32 @@
+{% extends 'layout.html' %}
+{% load static %}
+{%block content %}
+
+<!--<section class="log_in">-->
+<!--    <div class="container">-->
+<!--        <div class="row">-->
+<!--        <h2 class='log_in__text'>Вы вышли !</h2 >-->
+<!--        <p></p>-->
+<!--        &lt;!&ndash; перенаправление на авторизацию &ndash;&gt;-->
+<!--        <a class='col-2 log_in__button ' href="{% url 'login'%}">Авторизоваться снова</a>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</section>-->
+
+<section class="logout">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 logout__title">
+                    <h3>Вы вышли из системы!</h3>
+                </div>
+
+                <div class="col-12 logout__button">
+                    <a class="logout__form__button" href="{% url 'login'%}">Авторизоваться снова</a>
+
+                </div>
+
+            </div>
+        </div>
+</section>
+
+{% endblock %}

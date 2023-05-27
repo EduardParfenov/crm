@@ -1,0 +1,101 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{%block content %}
+
+<section class="contacts">
+    <div class="container">
+        <div class="row">
+            
+            <div class="col-6 contacts__block">
+                <h2 class="contacts__title">Наши контакты</h2>
+                <div class="contacts__text">
+                    <p class="contacts__text__header">Адрес:</p>
+                    <p class="contacts__text__item">443041, г.Самара, ул.Мечникова, 52</p>
+                    <p class="contacts__text__header">Телефон:</p>
+                    <p class="contacts__text__item">+7(846) 276-00-00 Приемная генерального директора</p>
+
+                    <p class="contacts__text__header">Email:</p>
+                    <a class="contacts__text__email" href="mailto:ProjectLevel@ProjectLevel.ru">
+                        ProjectLevel@ProjectLevel.ru</a>
+                </div>
+            </div>
+
+            <div class="col-6 contacts__block">
+                <h2 class="contacts__title__find">Как нас найти</h2>
+                <div>
+                    <script type="text/javascript" charset="utf-8" 
+                    async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A5e32a54406c3e4baa4f27d59eac7030f576caf67f8e9bd73fd7e29437a9fe09b&amp;width=700&amp;height=425&amp;lang=ru_RU&amp;scroll=true">
+                    </script>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</section>
+
+<section class="log_in">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-3"></div>
+
+            <div class="col-6">
+                <h2 class="log_in__title">Чем мы могли бы вам помочь?</h2>
+                <p class="log_in__text">Вы можете написать нам по любому интересующему вас вопросу!</p>
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="log_in__form">
+                       
+                        <label class="log_in__text" for="uname">Ваше имя</label>
+                        <input type="text" name="name" class="log_in__form__text" placeholder="Ваше имя *" value="" required/>
+                        
+
+                        <label class="log_in__text" for="psw">Почта</label>
+                        <input type="email" name="email" class="log_in__form__text" placeholder="Почта *" value="" required/>
+
+
+
+                        <label class="log_in__text" for="psw">Номер телефона</label>
+                        <input type="tel" name="phone" class="log_in__form__text" placeholder="Номер телефона *" value="" required />
+
+
+
+
+                        <label class="log_in__text" for="psw">Описание ситуации</label>
+                        <textarea name="subject" class="form-control" required placeholder="Опишите примерно какой у вас проблемный вопрос *" style="width: 100%; height: 150px;"></textarea>
+
+
+                       
+                        <p></p>
+
+                        {% if user.is_authenticated %}
+                        <div class="form-group my-3">
+                            <!-- если пользователь авторизован, то отправляем заявку в бд -->
+                            <input type="submit" name="btnSubmit" class="log_in__button log_in__button__pad" value="Отправить" />
+                        </div>
+                        {% else %}
+                        <p class="log_in__text">Для отправления вопроса нужно авторизоваться</p>
+                      <br>
+                      
+                              <a href="{% url 'login' %}" class="log_in__button" style="">Войти</a>
+
+                              {%endif%}
+                            </form>
+                                  
+                        
+                </div>
+            </div>
+        <div class="col-3"></div>
+
+            <div class="col-6 log_in__img">
+<!--                <img src="{% static 'soc_icons/log_in.jpg' %}">-->
+            </div>
+
+        </div>
+    </div>
+</section>
+
+{% endblock %}

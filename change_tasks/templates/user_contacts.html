@@ -1,0 +1,56 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{%block content %}
+
+<div class="col-12">
+  <h2 class="log_in__title">Обращения пользователя {{user.username}}</h2>
+</div>
+<section class="section1">
+  <article>
+    {% for cont in zayzvka %}
+    
+      <section class='section1__text'>
+   
+        <h5>Ваше имя: {{ cont.name }}</h5>
+            <h5>Ваша Почта: {{ cont.email }}</h5>
+            <h5>Ваш номер телефона: {{ cont.phone }}</h5>
+            <h5>Ваш вопрос: {{ cont.subject  }}</h5>
+            <h5>Дата обращения: {{cont.date_posted}}</h5>
+
+            {% if cont.answer_contact %}
+             <!-- если администратор ответил, то выводим текст ответа-->
+            <h5 > Ответ администратора: {{cont.answer_contact}}</h5>
+      
+        {% else %}
+      <br>
+      
+<br>
+<br>
+ <!-- кнопка скрыть которая по ID удаляет задачу из БД -->
+<a href="{% url 'delete-contact' cont.id %}" class="btn btn-danger">Удалить заявку</a> 
+ 
+        
+      </section>
+      {% endif %}
+      {% endfor %}
+        
+    </article>
+  </section>
+
+<style>
+  
+
+  article {
+      max-width: 1100px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr; /* fractions */
+      grid-gap: 50px;
+      margin: 10px auto;
+  }
+
+</style>
+
+  {% endblock %}
+
+  </div>

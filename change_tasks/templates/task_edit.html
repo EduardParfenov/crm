@@ -1,0 +1,46 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+
+<section class="list_users">
+    <h1 class='text-center'>Перенаправление задачи от пользователя {{ user.username }} </h1>
+         <div class='action_form'>
+            <form class='col-7 center container' method="POST">
+                {% csrf_token %}
+                {{form|crispy}}
+
+                <button class="assing__form__button1" type="button" onclick="swa()">Делегировать</button>
+
+                <div id="overlay">
+                <div class="popup">
+
+                <button class="close"  title="Закрыть окно" type="submit" onclick="swa2()"></button>
+
+                <p class="zag">Задача перенаправлена</p>
+                    Можете закрыть окно
+                </div>
+            </div>
+
+
+            </form>
+        </div>
+
+</section>
+
+<script type="text/javascript" src="{% static 'js/master.js' %}"></script>
+
+{% endblock %}
+
+
+
+
+ 
+
+
+
+
+ 

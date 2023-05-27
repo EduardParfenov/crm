@@ -1,0 +1,82 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{%block content %}
+
+<header class="header">
+            <div class="row">
+
+                <div class="col-12 header__block">
+                    <div class="header__title">Более 10 лет опыта проектных работ</div>
+                </div>
+
+         </div>
+    </header>
+
+<!--<style>-->
+<!--    .header {-->
+<!--        position: relative;-->
+<!--        background: #FFFBF2;-->
+<!--        background: url("{% static 'soc_icons/main.jpg' %}") no-repeat;-->
+<!--        background-position: center;-->
+<!--        background-size: cover;-->
+<!--        padding-top: 260px;-->
+<!--        padding-bottom: 120px;-->
+<!--    }-->
+<!--</style>-->
+
+<section class="section1">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 section1__block">
+
+                <h2 class="section1__title">Коротко о компании</h2>
+                
+                <div class="section1__text section1__text1">
+                    <p>Компания "ПроекLevel" была основана в 2010 году – на пике развития производства контрольно-измерительных
+                        приборов и широкого внедрения средств автоматизации в промышленности. Более 10 лет специалисты "ПроекLevel"
+                        накапливают уникальный опыт проектирования систем автоматизации производств и продолжают совершенствоваться
+                        в области проектирования средств АСУ ТП на химически, взрыво- и пожароопасных объектах.</p><br>
+                    <p>Миссия нашей компании – эффективно использовать наилучшие доступные технологии для обеспечения
+                        надежности и безопасности опасных производственных объектов. Применяя собственные технологические
+                        и научные разработки и продукты, а также комплексный подход к решению задач, "ПроекLevel" реализует
+                        проекты разных масштабов и сложности. </p>
+                </div>
+                
+            </div>
+        </div>    
+    </div>
+</section>
+
+<section class="section2">
+    <h2 class="section2__title">Новости компании</h2>
+    <article>
+        {% for new in news %}
+        <section class='section1__text'>
+     
+          <h2>{{new.title}}</h2>
+          <img class='img_news' src={{new.image.url}} alt="..." />
+          <p>{{new.description}}</strong></p>
+          <p>{{new.data}}</strong></p>
+        </section>
+        {% endfor %}   
+          
+      </article>
+    </section>
+
+ <style>
+    article {
+        max-width: 1100px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-gap: 50px;
+        margin: 20px auto;
+    }
+
+    .img_news {
+        width: 100%;
+        height: auto;
+    }
+
+ </style>
+{% endblock %}

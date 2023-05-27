@@ -1,0 +1,76 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{%block content %}
+
+
+<section class="section1">
+    <div class="col-12">
+         <h2 class="log_in__title">Задачи пользователя {{user.username}}</h2>
+    </div>
+
+  <article>
+    {% for task in tasks %}
+    {% if not task.is_hidden %}
+      <section class='section1__text'>
+   
+        <h6 class="card-title">Дата создания {{ task.created_at }}</h6>
+                
+        <li>Проект {{ task.Standard }}</li>
+
+        <li> От {{ task.created_by.first.username }}</li>
+        <li>Описание {{ task.description }}</li>
+        <br>
+        <br>
+
+         <!-- кнопка делегировать которая перенаправляет на изменение задачи по ее ID -->
+        <a href="{% url 'task_edit' task.id %}" class="assing__form__button1">Делегировать</a>
+            <!-- кнопка подробнее которая перенаправляет страницу с информацией о задачи по ее ID -->
+        <a href="{% url 'card_detail' task.id %}" class="assing__form__button2" >Подробнее </a>
+
+       <!-- кнопка Закрыть задачу которая по ID удаляет задачу из списка задач юзера -->
+        <form method="post" action="{% url 'hide_task' task.id %}">
+          {% csrf_token %}
+            <br>
+
+            <button class='assing__form__button3' type="button" onclick="swa()">Закрыть задачу</button>
+
+<!--   модальное окно     -->
+            <div id="overlay">
+                <div class="popup">
+
+                <button class="close"  title="Закрыть окно" type="submit" onclick="swa2()"></button>
+
+                <p class="zag">Задача закрыта</p>
+                    Можете закрыть окно
+                </div>
+            </div>
+
+
+
+        </form>
+      </section>
+      {% endif %}
+      {% endfor %}
+        
+    </article>
+  </section>
+
+
+<style>
+  article {
+      max-width: 1100px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-gap: 50px;
+      margin: 120px auto;
+  }
+</style>
+
+<script type="text/javascript" src="{% static 'js/master.js' %}"></script>
+
+{% endblock %}
+
+
+
+ 

@@ -1,0 +1,61 @@
+{% load static %}
+
+
+<footer class="footer">
+    <div class="container">
+        <div class="row footer__center">
+            <div class="col-2">
+                <div class="footer__logo">
+                    <a class="footer__img" href="{% url 'home' %}"><img  src="{% static 'soc_icons/logo.png' %}" ></a>
+                </div>
+            </div>
+
+            <div class="col-8">
+                    <ul class="footer__list">
+                        <li><a class="footer__item" href="mailto:info@projectlevel.ru">Написать в техподдержку</a></li>
+                         <!-- ссылка на страницу контактов -->
+                        <li><a class="footer__item" href="{% url 'contact' %}">Контакты</a></li>
+                    </ul>
+            </div>
+
+            <div class="col-2">
+                <div class="footer__icons">
+                    <ul>
+                        <li class="footer__title">Мы в соцсетях</li>
+                    </ul>
+
+
+                    <a class="footer__icons1" href="#" target="_blank"><img src="{% static 'soc_icons/facebook.png' %}"   alt="Обнаружены проблемы с сетью"></a> 
+                    <a class="footer__icons1" href="#"target="_blank" ><img src="{% static 'soc_icons/twitter.png' %}"  alt="Обнаружены проблемы с сетью"></a>
+                    <a class="footer__icons1" href="#"target="_blank"><img src="{% static 'soc_icons/telegram.png' %}"  alt="Обнаружены проблемы с сетью"></a>
+                   
+                    <ul>
+                        <a class="icon8" href="https://icons8.com/icon/13912/facebook">
+                            Логотипы выполнены с использованием рессурса "Icons8"</a>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row footer__footer">
+            
+            <div class="col-12">
+                <div class="footer__coop">
+                    <div class="footer__item1">© 2023 ПроектLevel</div>    
+                </div>
+            </div>
+
+        </div> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+ 

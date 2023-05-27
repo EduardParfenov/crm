@@ -1,0 +1,57 @@
+{% extends 'layout.html' %}
+{% load static %}
+{%block content %}
+
+
+<section class="log_in">
+	<div class="col-12 ">
+		  <h2 class="log_in__title">Таблица пользователей</h2>
+		</div>
+		<br>
+		<br>
+		<br>
+		<table class="table">
+			<thead>
+				<tr>
+					<th scope="col">#</th>
+				<th scope="col log_in__text">Имя пользователя</th>
+				</tr>
+			</thead>
+			<tbody>
+
+			{% for user in users %}
+				<tr>
+			  <th scope="row log_in__text">{{forloop.counter}}</th>
+			  <th><p> {{user.username}}</p></th>
+				</tr>
+
+			{% endfor %}
+
+			</tbody>
+		</table>
+</section>
+
+
+  <style>
+    .table {
+      width: 300px;
+      margin: auto;
+      border: 1px solid blue;
+      color:black;
+      border-collapse: collapse;
+      background: #FFFBF2;
+<!--      margin-bottom: 80px;-->
+    }
+    .table th {
+      font-weight: bold;
+      padding: 5px;
+      border: 1px solid black;
+    }
+    .table td {
+      border: 1px solid dddddd;
+      padding: 5px;
+    }
+  </style>
+
+
+{% endblock %}

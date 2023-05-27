@@ -1,0 +1,104 @@
+{% extends 'layout.html' %}
+{% load static %}
+{%block content %}
+
+
+<section class="assing__title">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+            
+                <h3 class="assing__title1" >Карточка задачи</h3>
+                <p class="assing__title2">Задача по документу № {{task.id}} от {{task.created_at}}</p> 
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="assing__body">
+    <div class="container">
+        
+        <div class="assing__body__content">
+            
+            <p class="assing__body__content__title"></p>
+            <p></p>
+            <p class="assing__body__content__text">{{task.user.name}}</p>
+           <p class="assing__body__content__text">Задача заведена {{task.created_at}}</p>
+            
+            <p class="assing__body__content__title">Проект:</p>
+            <p></p>
+            <p> {{ task.Standard.name }}</p>
+            <p></p>
+            
+            <p class="assing__body__content__title">Автор:</p>
+            <p></p>
+            <p>{{ task.created_by.first.username  }}</p>
+            
+            <p></p>
+            <p class="assing__body__content__title">Комментарий:</p>
+            <p></p>
+            <p>{{task.description}}</p>
+            <p></p>
+            <p class="assing__body__content__title">Срок исполнения:</p>
+            <p></p>
+            <p>{{task.created_at}}</p>
+            <p></p>
+
+            
+
+            <p class="assing__body__content__title">Файлы к задаче:</p>
+            <p></p>
+
+
+ 
+            <div class="col-md-3 mb-4 mt-4 mr-1 ml-1">
+                <div class="card box-shadow-hover">
+                  <div class="card-body">
+                    <h5 class="card-title">Скачать файл</h5>
+                    
+                    {% if task.file %}
+
+                    <a href="{{task.file.url}}" download>
+                    <button type="button" class="button-les"><span>Скачать файл</span></button>
+                    </a>
+                     
+                    {% else %}
+                    <p class="card-text">файл не был загружен</p>
+                    {%endif%}
+
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="col-md-3 mb-4 mt-4 mr-1 ml-1">
+                <div class="card box-shadow-hover">
+                  <div class="card-body">
+                    <h5 class="card-title">Прочитать файл</h5>
+                    
+                    {% if task.file %}
+                  
+                    <a href=" {% get_media_prefix %}{{ task.file}}" target="_blank"> 
+                    <button  type="button" class="button-les"> Читать 
+                      
+                      </button>
+                    </a>
+                     
+                    {% else %}
+                    <p class="card-text">файл не был загружен</p>
+                    {%endif%}
+                
+                  </div>
+                </div>
+              </div>
+
+           
+            <p></p>
+        </div> 
+
+                 
+    </div>
+</section>
+
+
+{% endblock %}

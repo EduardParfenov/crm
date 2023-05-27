@@ -1,0 +1,57 @@
+{% load static %}
+ 
+
+<nav class="nav">
+  <div class="container">
+      <div class="row nav__center">
+          <div class="col-2">
+
+              <div class="nav__logo">
+                  <a href="{% url 'home' %}"><img src="{% static 'soc_icons/logo.png' %}"></a>
+              </div>
+
+          </div>
+
+          <div class="col-10">
+                  <ul class="nav__list">
+<!--                      <li class="nav__item"><a class="nav__link" href={% url 'contact' %}>Контакты</a></li>-->
+                      <li class="nav__item"><a class="nav__link" href={% url 'list_users' %}>Сотрудники</a></li>
+                      <li class="nav__item"><a class="nav__link" href={% url 'contacts' %}>Обращения</a></li>
+                      <li class="nav__item"><a class="nav__link" href={% url 'user_page' %}>Личная страница</a></li>
+                    
+                      
+                       {% if user.is_superuser %}
+                      <li class="nav__item"><a class="nav__link" href={% url 'admin:index' %}>Админка</a></li> 
+                      {% endif %} 
+
+                      {% if user.is_authenticated %}
+                      <li class="nav__item"><a class="nav__link" href={% url 'create_task' %}>Cоздать задачу</a></li>
+                      {% comment %} <li class="nav__item"><a class="nav__link"  ></a></li>  {% endcomment %}
+                
+                  
+                      <li class="nav__item"><a class="nav__link" href={% url 'logout' %}>Выход</a></li>
+
+                       {% else %}
+                        <a class="nav__link2" href={% url 'register' %}>Регистрация</a></li>
+                        <a class="nav__link2" href={% url 'login' %}>Авторизация</a></li>
+
+                  </ul>
+                </div>
+
+
+          </div>
+
+<!--          <div class="col-3"></div>-->
+        {% endif %} 
+
+      </div>
+  </div>
+</nav>
+
+
+ 
+
+
+
+
+ 
